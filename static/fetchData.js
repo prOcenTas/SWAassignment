@@ -23,14 +23,21 @@ window.addEventListener("load", () => {
         //const temperatureData = new Temperature("2022-09-25T22:00:00.000Z", "Horsens", "temperature", "C", tempH)
         
         const temperatureData = new Temperature();
-        let testing = getData(data, "temperature", "Horsens");
-        let testingobj = Object.values(testing)[Object.values(testing).length - 1]
-        let testingH = testingobj.map(el => parseFloat(el.value));
-        let testigLatest = Object.values(testingH)[Object.values(testingH).length - 1];
 
-        
-        console.log(testing)
+        //testing new helper method
+        let testing = getData(data, "temperature", "Horsens");
+        let testingH = testing.map(el => parseFloat(el.value));
+        let testigLatest = Object.values(testingH)[Object.values(testingH).length - 1];
+        console.log("returns latest value: " + testigLatest)
+
+        let testingobj = Object.values(testing)[Object.values(testing).length - 1]
+        console.log("returns latest temperature object: ")
         console.log(testingobj)
+
+
+
+
+
 
         let last1DayWindHorsens = getSpecificData(data, "wind speed", "Horsens", 1);
         let windH = last1DayWindHorsens.map(el => parseFloat(el.value));
