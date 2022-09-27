@@ -24,10 +24,10 @@ window.addEventListener("load", () => {
         
         const temperatureData = new Temperature();
         let testing = getData(data, "temperature", "Horsens");
-        let testingH = testing.map(el => parseFloat(el.value));
+        let testingobj = Object.values(testing)[Object.values(testing).length - 1]
+        let testingH = testingobj.map(el => parseFloat(el.value));
         let testigLatest = Object.values(testingH)[Object.values(testingH).length - 1];
 
-        let testingobj = Object.values(testing)[Object.values(testing).length - 1]
         
         console.log(testing)
         console.log(testingobj)
