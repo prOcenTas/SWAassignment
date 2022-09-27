@@ -27,8 +27,10 @@ window.addEventListener("load", () => {
         let testingH = testing.map(el => parseFloat(el.value));
         let testigLatest = Object.values(testingH)[Object.values(testingH).length - 1];
 
-        console.log(last1DayTempHorsens)
-        console.log(testigLatest)
+        let testingobj = Object.values(testing)[Object.values(testing).length - 1]
+        
+        console.log(testing)
+        console.log(testingobj)
 
         let last1DayWindHorsens = getSpecificData(data, "wind speed", "Horsens", 1);
         let windH = last1DayWindHorsens.map(el => parseFloat(el.value));
