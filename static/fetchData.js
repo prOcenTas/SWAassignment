@@ -52,8 +52,20 @@ window.addEventListener("load", () => {
         const maxTemp = Math.max(...tempArr);   
         
         //------------------------------------------------------------------------------------------------
-        //-----------------------------------total preciption for the last day------------------------------
+        //-----------------------------------Total preciption for the last day------------------------------
+        const precipArr = [];
+        for(let i=1;i<=25;i++){
+            const testingobj = Object.values(last1DayPrecipitationHorsens)[Object.values(last1DayTempHorsens).length - i];
+            const precipData = new Precipitation(testingobj.time, testingobj.place, testingobj.type, testingobj.unit, testingobj.value, testingobj.precipitationType);
+            precipArr.push(precipData.getValue());
+        }
+        let total = 0;
+        for (var i in precipArr) {
+            total += precipArr[i];
+          }
 
+        //------------------------------------------------------------------------------------------------
+        //-----------------------------------Average wind speed for the last day------------------------------
 
 
         latestTemperatureNum.textContent = "Latest temperature: " + LatestTemperatureData.getValue() + " " + LatestTemperatureData.getUnit();
@@ -70,6 +82,8 @@ window.addEventListener("load", () => {
         console.log("Latest wind horsens: " + LatestWindData.getValue());
         console.log("Latest precipitation horsens: " + LatestPrecipData.getValue());
         console.log("Latest cloud coverage in horsens: " + LatestCloudData.getValue());
+        console.log("Total preciption for the last day in horsens: " + Math.floor(total));
+
 
     })
 
