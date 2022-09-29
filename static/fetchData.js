@@ -37,23 +37,6 @@ window.addEventListener("load", () => {
         let last1DayCloudHorsens = getData(data, "cloud coverage", "Horsens");
         let latestCloudHorsens = Object.values(last1DayCloudHorsens)[Object.values(last1DayCloudHorsens).length - 1];
         const LatestCloudData = new CloudCoverage(latestCloudHorsens.time, latestCloudHorsens.place, latestCloudHorsens.type, latestCloudHorsens.unit, latestCloudHorsens.value);
-        
-        // let last1DayTempHorsens = getData(data, "temperature", "Horsens");
-        // let tempH = last1DayTempHorsens.map(n => parseFloat(n.value));
-        // let latestTempHorsens = Object.values(tempH)[Object.values(tempH).length - 1];
-
-        // let last1DayWindHorsens = getData(data, "wind speed", "Horsens");
-        // let windH = last1DayWindHorsens.map(n => parseFloat(n.value));
-        // let latestWindHorsens = Object.values(windH)[Object.values(windH).length - 1];
-
-        // let last1DayPrecipitationHorsens = getData(data, "precipitation", "Horsens");
-        // let precipH = last1DayPrecipitationHorsens.map(n => parseFloat(n.value));
-        // let latestPrecipHorsens = Object.values(precipH)[Object.values(precipH).length - 1];
-
-        // let last1DayCloudHorsens = getData(data, "cloud coverage", "Horsens");
-        // let cloudH = last1DayCloudHorsens.map(n => parseFloat(n.value));
-        // let latestCloudHorsens = Object.values(cloudH)[Object.values(cloudH).length - 1];
-
 
         //------------------------------------------------------------------------------------------------
 
