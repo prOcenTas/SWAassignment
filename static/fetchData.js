@@ -12,6 +12,9 @@ window.addEventListener("load", () => {
     let TotalPrecipNum = document.querySelector(".TotalPrecipNum")
     let AvgWindNum = document.querySelector(".AvgWindNum")
 
+    let forecastTime = document.querySelector(".forecastTime")
+    let forecastTemp = document.querySelector(".forecastTemp")
+    let forecastTable = document.querySelector(".forecastTable")
 
     const forecastApi = 'http://localhost:8080/forecast'
     const dataApi = 'http://localhost:8080/data'
@@ -114,9 +117,19 @@ window.addEventListener("load", () => {
             time.push(forecastObj.time);
         }
         
-
+        
         console.log(time)
         console.log(temp)
 
+        for(let i=0;i<time.length;i++){
+            forecastTime.textContent = "Time: " + time[i];
+            forecastTemp.textContent = "Temp: " + temp[i];
+        }
+        
+        // document.write("<table>")
+        //     document.write("<tr>")
+        //         document.write("<td> test </td>")
+        //     document.write("</tr>")
+        // document.write("</table>")
     })
 })
