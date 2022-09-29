@@ -39,16 +39,21 @@ window.addEventListener("load", () => {
         const LatestCloudData = new CloudCoverage(latestCloudHorsens.time, latestCloudHorsens.place, latestCloudHorsens.type, latestCloudHorsens.unit, latestCloudHorsens.value);
 
         //------------------------------------------------------------------------------------------------
+        //-----------------------------------Minimum/Maximum temperature for the last day------------------------------
+        const tempArr = [];
+        // returns last days temperature objects(24)
+        for(let i=1;i<=25;i++){
+            const testingobj = Object.values(last1DayTempHorsens)[Object.values(last1DayTempHorsens).length - i];
+            const temperatureData = new Temperature(testingobj.time, testingobj.place, testingobj.type, testingobj.unit, testingobj.value)
+            tempArr.push(temperatureData.getValue());
+        }
 
-        // console.log("returns last days temperature objects(24): ")
-        // for(let i=1;i<=25;i++){
-        //     console.log("obj")
-        //     const testingobj = Object.values(last1DayTempHorsens)[Object.values(last1DayTempHorsens).length - i];
-        //     console.log(testingobj)
-        //     const temperatureData = new Temperature(testingobj.time, testingobj.place, testingobj.type, testingobj.unit, testingobj.value)
+        const minTemp = Math.min(...tempArr);
+        const maxTemp = Math.max(...tempArr);   
         
-        //     console.log("value: "+temperatureData.getValue())
-        // }
+        //------------------------------------------------------------------------------------------------
+        //-----------------------------------total preciption for the last day------------------------------
+
 
 
         latestTemperatureNum.textContent = "Latest temperature: " + LatestTemperatureData.getValue() + " " + LatestTemperatureData.getUnit();
@@ -56,12 +61,15 @@ window.addEventListener("load", () => {
         latestPrecipitationNum.textContent = "Latest precipitation: " + LatestPrecipData.getValue() + " " + LatestPrecipData.getUnit();
         latestCloudNum.textContent = "Latest cloud coverage: " + LatestCloudData.getValue() + " " + LatestCloudData.getUnit();
 
+        MinTempNum.textContent = "Minimum temperature: " + minTemp + " C";
+        MaxTempNum.textContent = "Maximum temperature: " + maxTemp + " C";
 
 
-        console.log("Latest temperature horsens: " + latestTempHorsens);
-        console.log("Latest wind horsens: " + latestTempHorsens);
-        console.log("Latest precipitation horsens: " + latestPrecipHorsens);
-        console.log("Latest cloud coverage in horsens: " + latestCloudHorsens);
+
+        console.log("Latest temperature horsens: " + LatestTemperatureData.getValue());
+        console.log("Latest wind horsens: " + LatestWindData.getValue());
+        console.log("Latest precipitation horsens: " + LatestPrecipData.getValue());
+        console.log("Latest cloud coverage in horsens: " + LatestCloudData.getValue());
 
     })
 
