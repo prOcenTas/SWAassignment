@@ -63,17 +63,9 @@ function CloudCoverage(time, place, type, unit, value) {
 }
 
 function WeatherPrediction(obj, event, dataType, to, from) {
-    function matches(weatherData) {
-        return event.place === weatherData.place &&
-            dataType.type === weatherData.type &&
-            dataType.unit === weatherData.unit &&
-            to <= weatherData.time &&
-            from >= weatherData.time
-    }
     return Object.assign(obj, event, dataType, {
         getTo() { return to },
-        getFrom() { return from },
-        matches
+        getFrom() { return from }
     })
 }
 
