@@ -59,15 +59,24 @@ window.addEventListener("load", () => {
             const precipData = new Precipitation(testingobj.time, testingobj.place, testingobj.type, testingobj.unit, testingobj.value, testingobj.precipitationType);
             precipArr.push(precipData.getValue());
         }
-        let total = 0;
+        let totalPrecip = 0;
         for (var i in precipArr) {
-            total += precipArr[i];
+            totalPrecip += precipArr[i];
           }
 
         //------------------------------------------------------------------------------------------------
         //-----------------------------------Average wind speed for the last day------------------------------
+        const windArr = [];
+        for(let i=1;i<=25;i++){
+            const testingobj = Object.values(last1DayWindHorsens)[Object.values(last1DayWindHorsens).length - i];
+            const windData = new Wind(testingobj.time, testingobj.place, testingobj.type, testingobj.unit, testingobj.value, testingobj.direction);
+            windArr.push(windData.getValue());
+        }
+        let averagePrecip = 0;
+        averagePrecip = windArr.reduce((a,b) => a + b, 0) / windArr.length;
 
-
+        //------------------------------------------------------------------------------------------------
+        
         latestTemperatureNum.textContent = "Latest temperature: " + LatestTemperatureData.getValue() + " " + LatestTemperatureData.getUnit();
         latestWindNum.textContent = "Latest wind speed: " + LatestWindData.getValue() + " " + LatestWindData.getUnit();
         latestPrecipitationNum.textContent = "Latest precipitation: " + LatestPrecipData.getValue() + " " + LatestPrecipData.getUnit();
@@ -75,14 +84,17 @@ window.addEventListener("load", () => {
 
         MinTempNum.textContent = "Minimum temperature: " + minTemp + " C";
         MaxTempNum.textContent = "Maximum temperature: " + maxTemp + " C";
-        TotalPrecipNum.textContent = "Total preciption: " + Math.floor(total) + " mm";
+        TotalPrecipNum.textContent = "Total preciption: " + Math.floor(totalPrecip) + " mm";
+        AvgWindNum.textContent = "Average wind speed: " + Math.floor(averagePrecip) + " m/s";
 
 
         console.log("Latest temperature horsens: " + LatestTemperatureData.getValue());
         console.log("Latest wind horsens: " + LatestWindData.getValue());
         console.log("Latest precipitation horsens: " + LatestPrecipData.getValue());
         console.log("Latest cloud coverage in horsens: " + LatestCloudData.getValue());
-        console.log("Total preciption for the last day in horsens: " + Math.floor(total));
+        console.log("Total preciption for the last day in horsens: " + Math.floor(totalPrecip));
+        console.log("Average wind speed for the last day in horsens: " + Math.floor(averagePrecip));
+
 
 
     })
