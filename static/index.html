@@ -7,49 +7,53 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Weather Report</title>
     <link rel="stylesheet" href="./style.css">
-    
+
 </head>
 
 
 <body>
-    <div class="allLatestData">
-        <h2>All data for the latest measurments(Horsens): </h2>
-        <div class="latestTemperatureDiv">
-            <h2 class="latestTemperatureNum"></h2>
+    <div class="main">
+        <div class="allLatestData">
+            <h2>All data for the latest measurments(Horsens): </h2>
+            <div class="latestTemperatureDiv">
+                <h2 class="latestTemperatureNum"></h2>
+            </div>
+            <div class="latestWindDiv">
+                <h2 class="latestWindNum"></h2>
+            </div>
+            <div class="latestPrecipitationDiv">
+                <h2 class="latestPrecipitationNum"></h2>
+            </div>
+            <div class="latestCloudDiv">
+                <h2 class="latestCloudNum"></h2>
+            </div>
         </div>
-        <div class="latestWindDiv">
-            <h2 class="latestWindNum"></h2>
+        <div class="MinMaxTotAvg">
+            <h2>Last days data(Horsens): </h2>
+            <div class="MinTempDiv">
+                <h2 class="MinTempNum"></h2>
+            </div>
+            <div class="MaxTempDiv">
+                <h2 class="MaxTempNum"></h2>
+            </div>
+            <div class="TotalPrecipDiv">
+                <h2 class="TotalPrecipNum"></h2>
+            </div>
+            <div class="AvgWindDiv">
+                <h2 class="AvgWindNum"></h2>
+            </div>
         </div>
-        <div class="latestPrecipitationDiv">
-            <h2 class="latestPrecipitationNum"></h2>
-        </div>
-        <div class="latestCloudDiv">
-            <h2 class="latestCloudNum"></h2>
-        </div>
-    </div>
-    <div class="MinMaxTotAvg">
-        <h2>Last days data(Horsens): </h2>
-        <div class="MinTempDiv">
-            <h2 class="MinTempNum"></h2>
-        </div>
-        <div class="MaxTempDiv">
-            <h2 class="MaxTempNum"></h2>
-        </div>
-        <div class="TotalPrecipDiv">
-            <h2 class="TotalPrecipNum"></h2>
-        </div>
-        <div class="AvgWindDiv">
-            <h2 class="AvgWindNum"></h2>
-        </div>
-    </div>
-    <div class="Forecast">
-        <h2 class="forecastTime"></h2>
-        <h2 class="forecastTemp"></h2>
-        <table class="forecastTable">
-            
-        </table>
-    </div>
+        <div class="Forecast">
+            <h2 class="forecastTime"></h2>
+            <h2 class="forecastTemp"></h2>
 
+            <table class="forecastTable">
+
+            </table>
+        </div>
+    </div>
+    <div id='forecast'>
+    </div>
     <script src="weathermodel.js"></script>
     <script src="helper.js"></script>
     <script src="fetchData.js"></script>
