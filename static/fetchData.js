@@ -75,7 +75,7 @@ window.addEventListener("load", () => {
 
         MinTempNum.textContent = "Minimum temperature: " + minTemp + " C";
         MaxTempNum.textContent = "Maximum temperature: " + maxTemp + " C";
-
+        TotalPrecipNum.textContent = "Total preciption: " + Math.floor(total) + " mm";
 
 
         console.log("Latest temperature horsens: " + LatestTemperatureData.getValue());
