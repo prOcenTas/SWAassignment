@@ -13,8 +13,28 @@
 
 <body>
     <div class="main">
+        <div class="tab">
+            <button class="tablinks" onclick="openCity(event, 'Horsens');getDataForCity('Horsens'); getForecastForCity('Horsens')">Horsens</button>
+            <button class="tablinks" onclick="openCity(event, 'Aarhus');getDataForCity('Aarhus');getForecastForCity('Aarhus');">Aarhus</button>
+            <button class="tablinks" onclick="openCity(event, 'Copenhagen');getDataForCity('Copenhagen');getForecastForCity('Copenhagen');">Copenhagen</button>
+          </div>
+          
+          <div id="Horsens" class="tabcontent">
+            <h3>Horsens</h3>
+          </div>
+          
+          <div id="Aarhus" class="tabcontent">
+            <h3>Aarhus</h3> 
+          </div>
+          
+          <div id="Copenhagen" class="tabcontent">
+            <h3>Copenhagen</h3>
+          </div>
+
         <div class="allLatestData">
-            <h2>All data for the latest measurments(Horsens): </h2>
+            
+            <h2>All data for the latest measurments: </h2>
+            <br>
             <div class="latestTemperatureDiv">
                 <h2 class="latestTemperatureNum"></h2>
             </div>
@@ -28,8 +48,11 @@
                 <h2 class="latestCloudNum"></h2>
             </div>
         </div>
+
         <div class="minMaxTotAvg">
-            <h2>Last days data(Horsens): </h2>
+            <br>
+            <h2>Data for the last day: </h2>
+            <br>
             <div class="minTempDiv">
                 <h2 class="minTempNum"></h2>
             </div>
@@ -46,12 +69,12 @@
     </div>
     <div id="forcast_title">Forecast for the next 24h</div>
     <div class="forecast_area">
-        <div id="forecast">
-        </div>
+        <div id="forecast"></div>
     </div>
     <script src="weathermodel.js"></script>
     <script src="helper.js"></script>
     <!-- <script src="fetchData.js"></script> -->
+
     <script src="httpRequest.js"></script>
 </body>
 
