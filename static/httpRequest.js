@@ -12,9 +12,15 @@ window.addEventListener("load", () => {
     const forecastApi = 'http://localhost:8080/forecast'
     const dataApi = 'http://localhost:8080/data'
 
-    fetch(dataApi).then(response => {
-        return response.json()
-    }).then(data => {
+    const request = new XMLHttpRequest()
+    request.open('GET', dataApi)
+
+    console.log(request);
+
+    request.onload = () => {
+        const data = JSON.parse(request.responseText);
+        console.log("data inside");
+        console.log(data);
 
         //-----------------------------------------------------------------------------------------------
         //-----------------------------------Latest measurment of each kind------------------------------
@@ -84,6 +90,7 @@ window.addEventListener("load", () => {
         avgWindNum.textContent = "Average wind speed: " + Math.floor(averagePrecip) + " m/s";
 
 
+
         console.log("Latest temperature horsens: " + LatestTemperatureData.getValue());
         console.log("Latest wind horsens: " + LatestWindData.getValue());
         console.log("Latest precipitation horsens: " + LatestPrecipData.getValue());
@@ -91,45 +98,48 @@ window.addEventListener("load", () => {
         console.log("Total preciption for the last day in horsens: " + Math.floor(totalPrecip));
         console.log("Average wind speed for the last day in horsens: " + Math.floor(averagePrecip));
 
-    })
-    fetch(forecastApi).then(response => {
-        return response.json()
-    }).then(forecast => {
+        request.open('GET', forecastApi)
+        request.onload = () => {
+            const forecast = JSON.parse(request.responseText)
 
-        let forecastData = getData(forecast, "temperature", "Horsens");
 
-        const time = [];
-        const temp = []
-        for (let i = 0; i < 24; i++) {
-            const forecastObj = Object.values(forecastData)[i];
-            const tempPrediction = new TemperaturePrediction(forecastObj.time, forecastObj.place, forecastObj.type, forecastObj.unit, forecastObj.from, forecastObj.to);
-            //For some reason I can not get From value even though it is the same as To attribute... so using object to get those values we need
-            // let to = tempPrediction.getTo();
-            // let from = tempPrediction.getFrom();
+            let forecastData = getData(forecast, "temperature", "Horsens");
+            console.log("FORECAST APIIIIIIIII")
+            const time = [];
+            const temp = []
+            for (let i = 0; i < 24; i++) {
+                const forecastObj = Object.values(forecastData)[i];
+                const tempPrediction = new TemperaturePrediction(forecastObj.time, forecastObj.place, forecastObj.type, forecastObj.unit, forecastObj.from, forecastObj.to);
+                //For some reason I can not get From value even though it is the same as To attribute... so using object to get those values we need
+                // let to = tempPrediction.getTo();
+                // let from = tempPrediction.getFrom();
 
-            temp.push(Math.floor((forecastObj.to + forecastObj.from) / 2));
-            time.push(forecastObj.time);
+                temp.push(Math.floor((forecastObj.to + forecastObj.from) / 2));
+                time.push(forecastObj.time);
 
-            // console.log(from)
-            // console.log(to)
+                // console.log(from)
+                // console.log(to)
+            }
+
+            let list = document.getElementById('forecast')
+            for (let i = 0; i < time.length; i++) {
+
+                let li = document.createElement('div')
+                li.classList.add('forecast-list')
+                let temps = document.createElement('div')
+                temps.classList.add('temp')
+                let times = document.createElement('div')
+                times.classList.add('time')
+
+                temps.innerHTML = `${temp[i]} &#8451`
+                times.innerHTML = `${new Date(time[i]).getHours()}:00`
+                li.appendChild(times)
+                li.appendChild(temps)
+
+                list.appendChild(li)
+            }
         }
-
-        let list = document.getElementById('forecast')
-        for (let i = 0; i < time.length; i++) {
-
-            let li = document.createElement('div')
-            li.classList.add('forecast-list')
-            let temps = document.createElement('div')
-            temps.classList.add('temp')
-            let times = document.createElement('div')
-            times.classList.add('time')
-
-            temps.innerHTML = `${temp[i]} &#8451`
-            times.innerHTML = `${new Date(time[i]).getHours()}:00`
-            li.appendChild(times)
-            li.appendChild(temps)
-
-            list.appendChild(li)
-        }
-    })
+        request.send()
+    }
+    request.send()
 })
