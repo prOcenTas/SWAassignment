@@ -27,8 +27,8 @@ function Temperature(time, place, type, unit, value) {
     let event = Event(time, place);
     let data_type = DataType(type, unit);
     let weatherData = WeatherData(event, data_type, value);
-    
-    return Object.assign(weatherData, { });
+
+    return Object.assign(weatherData, {});
 }
 
 function Wind(time, place, type, unit, value, direction) {
@@ -74,7 +74,7 @@ function TemperaturePrediction(time, place, type, unit, from, to) {
     let data_type = DataType(type, unit);
     let weatherPrediction = WeatherPrediction(event, data_type, from, to)
 
-    return Object.assign(weatherPrediction, { });
+    return Object.assign(weatherPrediction, {});
 }
 
 function WindPrediction(time, place, type, unit, from, to, direction) {

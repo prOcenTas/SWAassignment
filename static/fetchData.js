@@ -4,10 +4,10 @@ window.addEventListener("load", () => {
     let latestPrecipitationNum = document.querySelector(".latestPrecipitationNum")
     let latestCloudNum = document.querySelector(".latestCloudNum")
 
-    let MinTempNum = document.querySelector(".MinTempNum")
-    let MaxTempNum = document.querySelector(".MaxTempNum")
-    let TotalPrecipNum = document.querySelector(".TotalPrecipNum")
-    let AvgWindNum = document.querySelector(".AvgWindNum")
+    let minTempNum = document.querySelector(".minTempNum")
+    let maxTempNum = document.querySelector(".maxTempNum")
+    let totalPrecipNum = document.querySelector(".totalPrecipNum")
+    let avgWindNum = document.querySelector(".avgWindNum")
 
     let forecastTime = document.querySelector(".forecastTime")
     let forecastTemp = document.querySelector(".forecastTemp")
@@ -82,10 +82,10 @@ window.addEventListener("load", () => {
         latestPrecipitationNum.textContent = "Latest precipitation: " + LatestPrecipData.getValue() + " " + LatestPrecipData.getUnit();
         latestCloudNum.textContent = "Latest cloud coverage: " + LatestCloudData.getValue() + " " + LatestCloudData.getUnit();
 
-        MinTempNum.textContent = "Minimum temperature: " + minTemp + " C";
-        MaxTempNum.textContent = "Maximum temperature: " + maxTemp + " C";
-        TotalPrecipNum.textContent = "Total preciption: " + Math.floor(totalPrecip) + " mm";
-        AvgWindNum.textContent = "Average wind speed: " + Math.floor(averagePrecip) + " m/s";
+        minTempNum.textContent = "Minimum temperature: " + minTemp + " C";
+        maxTempNum.textContent = "Maximum temperature: " + maxTemp + " C";
+        totalPrecipNum.textContent = "Total preciption: " + Math.floor(totalPrecip) + " mm";
+        avgWindNum.textContent = "Average wind speed: " + Math.floor(averagePrecip) + " m/s";
 
 
         console.log("Latest temperature horsens: " + LatestTemperatureData.getValue());
@@ -101,28 +101,30 @@ window.addEventListener("load", () => {
     }).then(forecast => {
 
         let forecastData = getData(forecast, "temperature", "Horsens");
+
         const time = [];
         const temp = []
         for (let i = 0; i < 24; i++) {
             const forecastObj = Object.values(forecastData)[i];
             const tempPrediction = new TemperaturePrediction(forecastObj.time, forecastObj.place, forecastObj.type, forecastObj.unit, forecastObj.from, forecastObj.to);
             //For some reason I can not get From value even though it is the same as To attribute... so using object to get those values we need
-            let to = tempPrediction.getTo();
-            let from = tempPrediction.getFrom();
+            // let to = tempPrediction.getTo();
+            // let from = tempPrediction.getFrom();
 
             temp.push(Math.floor((forecastObj.to + forecastObj.from) / 2));
             time.push(forecastObj.time);
+
+            // console.log(from)
+            // console.log(to)
         }
 
 
-        console.log(time)
-        console.log(temp)
+
 
 
         let list = document.getElementById('forecast')
         for (let i = 0; i < time.length; i++) {
-            forecastTime.textContent = "Time: " + time[i];
-            forecastTemp.textContent = "Temp: " + temp[i];
+
             let li = document.createElement('div')
             li.classList.add('forecast-list')
             let temps = document.createElement('div')
