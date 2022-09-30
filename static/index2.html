@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html land="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weather Insert</title>
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+
+
+<body>
+    <form id="form" method="post">
+        <input type="integer" , id="temp" placeholder="Temperature" /></br>
+        <input type="text" , id="place" placeholder="Horsens/Aarhus/Copenhagen" /></br>
+        <input type="submit" value="Add" />
+    </form>
+    <div></div>
+    <form id="form2" method="post">
+        <input type="integer" , id="amount" placeholder="Amount" /></br>
+        <input type="text" , id="ptype" placeholder="Precipitation type" /></br>
+        <input type="text" , id="place" placeholder="Horsens/Aarhus/Copenhagen" /></br>
+        <input type="submit" value="Add" />
+    </form>
+    <div></div>
+    <form id="form3" method="post">
+        <input type="integer" , id="speed" placeholder="Speed" /></br>
+        <input type="text" , id="direction" placeholder="Direction" /></br>
+        <input type="text" , id="place" placeholder="Horsens/Aarhus/Copenhagen" /></br>
+        <input type="submit" value="Add" />
+    </form>
+    <div></div>
+    <form id="form4" method="post">
+        <input type="integer" , id="percentage" placeholder="Percentage " /></br>
+        <input type="text" , id="place" placeholder="Horsens/Aarhus/Copenhagen" /></br>
+        <input type="submit" value="Add" />
+    </form>
+
+    <script>
+        var form = document.getElementById('form')
+        var form2 = document.getElementById('form2')
+        var form3 = document.getElementById('form3')
+        var form4 = document.getElementById('form4')
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault()
+            var tempValue = document.getElementById('temp').value
+            var place = document.getElementById('place').value
+            fetch('http://localhost:8080/data', {
+                method: 'POST',
+                body: JSON.stringify({
+                    value: tempValue,
+                    type: "temperature",
+                    unit: "C",
+                    time : new Date(),
+                    place : place
+                }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                }
+            })
+        });
+        form2.addEventListener('submit', function (e) {
+            e.preventDefault()
+            var amount = document.getElementById('amount').value
+            var ptype = document.getElementById('ptype').value
+            var place = document.getElementById('place').value
+            fetch('http://localhost:8080/data', {
+                method: 'POST',
+                body: JSON.stringify({
+                    value: tempValue,
+                    precipitation_type: ptype,
+                    type: "precipitation",
+                    unit: "mm",
+                    time : new Date(),
+                    place : place
+                }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                }
+            })
+        });
+        form3.addEventListener('submit', function (e) {
+            e.preventDefault()
+            var amount = document.getElementById('amount').value
+            var direction = document.getElementById('direction').value
+            var place = document.getElementById('place').value
+            fetch('http://localhost:8080/data', {
+                method: 'POST',
+                body: JSON.stringify({
+                    value: tempValue,
+                    direction: direction,
+                    type: "wind speed",
+                    unit: "m/s",
+                    time : new Date(),
+                    place : place
+                }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                }
+            })
+        });
+        form4.addEventListener('submit', function (e) {
+            e.preventDefault()
+            var amount = document.getElementById('percentage').value
+            var place = document.getElementById('place').value
+            fetch('http://localhost:8080/data', {
+                method: 'POST',
+                body: JSON.stringify({
+                    value: amount,
+                    type: "cloud coverage",
+                    unit: "%",
+                    time : new Date(),
+                    place : place
+                }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                }
+            })
+        });
+    </script>
+
+</body>
+
+
+</html>

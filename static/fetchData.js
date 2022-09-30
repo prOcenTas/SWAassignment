@@ -9,10 +9,6 @@ window.addEventListener("load", () => {
     let totalPrecipNum = document.querySelector(".totalPrecipNum")
     let avgWindNum = document.querySelector(".avgWindNum")
 
-    let forecastTime = document.querySelector(".forecastTime")
-    let forecastTemp = document.querySelector(".forecastTemp")
-    let forecastTable = document.querySelector(".forecastTable")
-
     const forecastApi = 'http://localhost:8080/forecast'
     const dataApi = 'http://localhost:8080/data'
 
