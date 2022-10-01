@@ -12,26 +12,36 @@
 
 
 <body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li>
+                <a href="index2.html">Send weather data</a>
+            </li>
+
+        </ul>
+    </nav>
+    <h2>Send tepmerature data</h2>
     <form id="form" method="post">
         <input type="integer" , id="temp" placeholder="Temperature" /></br>
         <input type="text" , id="place" placeholder="Horsens/Aarhus/Copenhagen" /></br>
         <input type="submit" value="Add" />
     </form>
-    <div></div>
+    <h2>Send precipitation data</h2>
     <form id="form2" method="post">
         <input type="integer" , id="amount" placeholder="Amount" /></br>
         <input type="text" , id="ptype" placeholder="Precipitation type" /></br>
         <input type="text" , id="place" placeholder="Horsens/Aarhus/Copenhagen" /></br>
         <input type="submit" value="Add" />
     </form>
-    <div></div>
+    <h2>Send wind data</h2>
     <form id="form3" method="post">
         <input type="integer" , id="speed" placeholder="Speed" /></br>
         <input type="text" , id="direction" placeholder="Direction" /></br>
         <input type="text" , id="place" placeholder="Horsens/Aarhus/Copenhagen" /></br>
         <input type="submit" value="Add" />
     </form>
-    <div></div>
+    <h2>Send cloud coverage data</h2>
     <form id="form4" method="post">
         <input type="integer" , id="percentage" placeholder="Percentage " /></br>
         <input type="text" , id="place" placeholder="Horsens/Aarhus/Copenhagen" /></br>
@@ -44,7 +54,7 @@
         var form3 = document.getElementById('form3')
         var form4 = document.getElementById('form4')
 
-        form.addEventListener('submit', function (e) {
+        form.addEventListener('submit', function(e) {
             e.preventDefault()
             var tempValue = document.getElementById('temp').value
             var place = document.getElementById('place').value
@@ -54,15 +64,15 @@
                     value: tempValue,
                     type: "temperature",
                     unit: "C",
-                    time : new Date(),
-                    place : place
+                    time: new Date(),
+                    place: place
                 }),
                 headers: {
                     'Content-type': 'application/json; charset=UTF-8',
                 }
             })
         });
-        form2.addEventListener('submit', function (e) {
+        form2.addEventListener('submit', function(e) {
             e.preventDefault()
             var amount = document.getElementById('amount').value
             var ptype = document.getElementById('ptype').value
@@ -74,15 +84,15 @@
                     precipitation_type: ptype,
                     type: "precipitation",
                     unit: "mm",
-                    time : new Date(),
-                    place : place
+                    time: new Date(),
+                    place: place
                 }),
                 headers: {
                     'Content-type': 'application/json; charset=UTF-8',
                 }
             })
         });
-        form3.addEventListener('submit', function (e) {
+        form3.addEventListener('submit', function(e) {
             e.preventDefault()
             var amount = document.getElementById('amount').value
             var direction = document.getElementById('direction').value
@@ -94,15 +104,15 @@
                     direction: direction,
                     type: "wind speed",
                     unit: "m/s",
-                    time : new Date(),
-                    place : place
+                    time: new Date(),
+                    place: place
                 }),
                 headers: {
                     'Content-type': 'application/json; charset=UTF-8',
                 }
             })
         });
-        form4.addEventListener('submit', function (e) {
+        form4.addEventListener('submit', function(e) {
             e.preventDefault()
             var amount = document.getElementById('percentage').value
             var place = document.getElementById('place').value
@@ -112,8 +122,8 @@
                     value: amount,
                     type: "cloud coverage",
                     unit: "%",
-                    time : new Date(),
-                    place : place
+                    time: new Date(),
+                    place: place
                 }),
                 headers: {
                     'Content-type': 'application/json; charset=UTF-8',
