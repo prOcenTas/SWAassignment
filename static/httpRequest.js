@@ -3,13 +3,13 @@ const dataApi = 'http://localhost:8080/data'
 window.addEventListener("load", () => {
     getDataForCity("Horsens");
     getForecastForCity("Horsens");
-    openCity('Horsens','Horsens');
+    openCity('Horsens', 'Horsens');
 })
 
-const request = new XMLHttpRequest()
-request.open('GET', dataApi)
 
 function getDataForCity(cityName) {
+    const request = new XMLHttpRequest()
+    request.open('GET', dataApi)
     request.onload = () => {
         const data = JSON.parse(request.responseText);
 
@@ -34,7 +34,7 @@ function getDataForCity(cityName) {
         //------------------------------------------------------------------------------------------------
         //-----------------------------------Minimum/Maximum temperature for the last day------------------------------
         const tempArr = []
-        // returns last days temperature objects(24)
+            // returns last days temperature objects(24)
         for (let i = 1; i <= 25; i++) {
             const testingobj = Object.values(last1DayTemp)[Object.values(last1DayTemp).length - i]
             const temperatureData = new Temperature(testingobj.time, testingobj.place, testingobj.type, testingobj.unit, testingobj.value)
@@ -82,11 +82,12 @@ function getDataForCity(cityName) {
     request.send()
 }
 
-const requestF = new XMLHttpRequest()
-requestF.open('GET', forecastApi)
 
-function getForecastForCity(cityName){
-    requestF.onload = () => {
+
+function getForecastForCity(cityName) {
+    const request = new XMLHttpRequest()
+    request.open('GET', forecastApi)
+    request.onload = () => {
         const forecast = JSON.parse(request.responseText)
 
         let forecastData = getData(forecast, "temperature", cityName);
@@ -112,7 +113,7 @@ function getForecastForCity(cityName){
         //-----------------------------------Forecast for the next 24h------------------------------
 
         let list = document.getElementById('forecast')
-        list.innerHTML =""
+        list.innerHTML = ""
         for (let i = 0; i < time.length; i++) {
 
             let li = document.createElement('div')
