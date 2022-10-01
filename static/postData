@@ -1,0 +1,81 @@
+var form = document.getElementById('form')
+var form2 = document.getElementById('form2')
+var form3 = document.getElementById('form3')
+var form4 = document.getElementById('form4')
+
+form.addEventListener('submit', function(e) {
+    e.preventDefault()
+    var tempValue = document.getElementById('temp').value
+    var place = document.getElementById('place').value
+    fetch('http://localhost:8080/data', {
+        method: 'POST',
+        body: JSON.stringify({
+            value: tempValue,
+            type: "temperature",
+            unit: "C",
+            time: new Date(),
+            place: place
+        }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        }
+    })
+});
+form2.addEventListener('submit', function(e) {
+    e.preventDefault()
+    var amount = document.getElementById('amount').value
+    var ptype = document.getElementById('ptype').value
+    var place = document.getElementById('place').value
+    fetch('http://localhost:8080/data', {
+        method: 'POST',
+        body: JSON.stringify({
+            value: tempValue,
+            precipitation_type: ptype,
+            type: "precipitation",
+            unit: "mm",
+            time: new Date(),
+            place: place
+        }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        }
+    })
+});
+form3.addEventListener('submit', function(e) {
+    e.preventDefault()
+    var amount = document.getElementById('amount').value
+    var direction = document.getElementById('direction').value
+    var place = document.getElementById('place').value
+    fetch('http://localhost:8080/data', {
+        method: 'POST',
+        body: JSON.stringify({
+            value: tempValue,
+            direction: direction,
+            type: "wind speed",
+            unit: "m/s",
+            time: new Date(),
+            place: place
+        }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        }
+    })
+});
+form4.addEventListener('submit', function(e) {
+    e.preventDefault()
+    var amount = document.getElementById('percentage').value
+    var place = document.getElementById('place').value
+    fetch('http://localhost:8080/data', {
+        method: 'POST',
+        body: JSON.stringify({
+            value: amount,
+            type: "cloud coverage",
+            unit: "%",
+            time: new Date(),
+            place: place
+        }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        }
+    })
+});

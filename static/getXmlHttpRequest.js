@@ -146,5 +146,10 @@ function openCity(evt, cityName) {
         tablinks[i].className = tablinks[i].className.replace(" active", "")
     }
     document.getElementById(cityName).style.display = "block"
-    evt.currentTarget.className += " active"
+    if (evt === "Horsens") {
+        document.querySelector(".tablinks").className += " active"
+    } else {
+        evt.currentTarget.className += " active"
+
+    }
 }

@@ -6,13 +6,13 @@
    
    body {
        height: 100vh;
-       background: linear-gradient(rgb(85, 186, 253), rgb(37, 115, 249));
+       background: rgb(85, 186, 253);
        font-family: sans-serif;
        color: rgb(0, 0, 0);
    }
    
    #forecast {
-       margin-top: 20px;
+       margin-top: 10px;
        font-size: medium;
        display: flex;
        gap: 50px;
@@ -21,7 +21,7 @@
    }
    
    #forcast_title {
-       margin-top: 50px;
+       margin-top: 30px;
    }
    
    .forecast-list {
@@ -40,7 +40,7 @@
    }
    
    .forecast_area {
-       background-color: rgb(5, 182, 247);
+       background-color: rgb(37, 115, 249);
    }
    
    .tab {
