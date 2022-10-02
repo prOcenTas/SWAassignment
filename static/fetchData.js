@@ -3,7 +3,7 @@ const dataApi = 'http://localhost:8080/data'
 window.addEventListener("load", () => {
     getDataForCity("Horsens");
     getForecastForCity("Horsens");
-    openCity('Horsens', 'Horsens');
+    document.getElementById("horsensTab").click()
 })
 
 function getDataForCity(cityName) {
@@ -45,10 +45,15 @@ function getDataForCity(cityName) {
         //------------------------------------------------------------------------------------------------
         //-----------------------------------Total preciption for the last day------------------------------
         const precipArr = []
+
         for (let i = 1; i <= 25; i++) {
-            const testingobj = Object.values(last1DayPrecipitation)[Object.values(last1DayTemp).length - i]
+
+            const testingobj = Object.values(last1DayPrecipitation)[Object.values(last1DayPrecipitation).length - i]
+
             const precipData = new Precipitation(testingobj.time, testingobj.place, testingobj.type, testingobj.unit, testingobj.value, testingobj.precipitationType)
+
             precipArr.push(precipData.getValue())
+
         }
         let totalPrecip = 0
         for (var i in precipArr) {
@@ -128,23 +133,4 @@ function getForecastForCity(cityName) {
         }
     })
 
-}
-
-function openCity(evt, cityName) {
-    var i, tabcontent, tablinks
-    tabcontent = document.getElementsByClassName("tabcontent")
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none"
-    }
-    tablinks = document.getElementsByClassName("tablinks")
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "")
-    }
-    document.getElementById(cityName).style.display = "block"
-    if (evt === "Horsens") {
-        document.querySelector(".tablinks").className += " active"
-    } else {
-        evt.currentTarget.className += " active"
-
-    }
 }

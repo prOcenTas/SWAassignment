@@ -1,16 +1,19 @@
-var form = document.getElementById('form')
-var form2 = document.getElementById('form2')
-var form3 = document.getElementById('form3')
-var form4 = document.getElementById('form4')
+let form = document.getElementById("form")
+let form2 = document.getElementById('form2')
+let form3 = document.getElementById('form3')
+let form4 = document.getElementById('form4')
 
+
+//Using FETCH()
 form.addEventListener('submit', function(e) {
     e.preventDefault()
-    var tempValue = document.getElementById('temp').value
-    var place = document.getElementById('place').value
+    let tempValue = document.getElementById('temp').value
+    let tempValueNum = parseFloat(tempValue)
+    let place = document.getElementById('place').value
     fetch('http://localhost:8080/data', {
         method: 'POST',
         body: JSON.stringify({
-            value: tempValue,
+            value: tempValueNum,
             type: "temperature",
             unit: "C",
             time: new Date(),
@@ -23,13 +26,14 @@ form.addEventListener('submit', function(e) {
 });
 form2.addEventListener('submit', function(e) {
     e.preventDefault()
-    var amount = document.getElementById('amount').value
-    var ptype = document.getElementById('ptype').value
-    var place = document.getElementById('place').value
+    let amount = document.getElementById('amount').value
+    let amountNum = parseFloat(amount)
+    let ptype = document.getElementById('type').value
+    let place = document.getElementById('pPlace').value
     fetch('http://localhost:8080/data', {
         method: 'POST',
         body: JSON.stringify({
-            value: tempValue,
+            value: amountNum,
             precipitation_type: ptype,
             type: "precipitation",
             unit: "mm",
@@ -43,13 +47,14 @@ form2.addEventListener('submit', function(e) {
 });
 form3.addEventListener('submit', function(e) {
     e.preventDefault()
-    var amount = document.getElementById('amount').value
-    var direction = document.getElementById('direction').value
-    var place = document.getElementById('place').value
+    let amount = document.getElementById('speed').value
+    let amountNum = parseFloat(amount)
+    let direction = document.getElementById('direction').value
+    let place = document.getElementById('wPlace').value
     fetch('http://localhost:8080/data', {
         method: 'POST',
         body: JSON.stringify({
-            value: tempValue,
+            value: amountNum,
             direction: direction,
             type: "wind speed",
             unit: "m/s",
@@ -63,12 +68,13 @@ form3.addEventListener('submit', function(e) {
 });
 form4.addEventListener('submit', function(e) {
     e.preventDefault()
-    var amount = document.getElementById('percentage').value
-    var place = document.getElementById('place').value
+    let amount = document.getElementById('percentage').value
+    let amountNum = parseFloat(amount)
+    let place = document.getElementById('cPlace').value
     fetch('http://localhost:8080/data', {
         method: 'POST',
         body: JSON.stringify({
-            value: amount,
+            value: amountNum,
             type: "cloud coverage",
             unit: "%",
             time: new Date(),

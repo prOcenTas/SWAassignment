@@ -23,37 +23,33 @@
     </nav>
     <h2>Send tepmerature data</h2>
     <form id="form" method="post">
-        <input type="integer" , id="temp" placeholder="Temperature" /></br>
+        <input type="number" , id="temp" placeholder="Temperature" /></br>
         <input type="text" , id="place" placeholder="Horsens/Aarhus/Copenhagen" /></br>
         <input type="submit" value="Add" />
     </form>
     <h2>Send precipitation data</h2>
     <form id="form2" method="post">
-        <input type="integer" , id="amount" placeholder="Amount" /></br>
-        <input type="text" , id="ptype" placeholder="Precipitation type" /></br>
-        <input type="text" , id="place" placeholder="Horsens/Aarhus/Copenhagen" /></br>
+        <input type="number" , id="amount" placeholder="Amount" /></br>
+        <input type="text" , id="type" placeholder="Precipitation type" /></br>
+        <input type="text" , id="pPlace" placeholder="Horsens/Aarhus/Copenhagen" /></br>
         <input type="submit" value="Add" />
     </form>
     <h2>Send wind data</h2>
     <form id="form3" method="post">
-        <input type="integer" , id="speed" placeholder="Speed" /></br>
+        <input type="number" , id="speed" placeholder="Speed" /></br>
         <input type="text" , id="direction" placeholder="Direction" /></br>
-        <input type="text" , id="place" placeholder="Horsens/Aarhus/Copenhagen" /></br>
+        <input type="text" , id="wPlace" placeholder="Horsens/Aarhus/Copenhagen" /></br>
         <input type="submit" value="Add" />
     </form>
     <h2>Send cloud coverage data</h2>
     <form id="form4" method="post">
-        <input type="integer" , id="percentage" placeholder="Percentage " /></br>
-        <input type="text" , id="place" placeholder="Horsens/Aarhus/Copenhagen" /></br>
+        <input type="number" , id="percentage" placeholder="Percentage " /></br>
+        <input type="text" , id="cPlace" placeholder="Horsens/Aarhus/Copenhagen" /></br>
         <input type="submit" value="Add" />
     </form>
 
-    <script>
-        src = "postData.js"
-    </script>
-    <!-- <script>
-        src = "postXmlHttpRequest.js"
-    </script> -->
+    <!-- <script src="postData.js"></script> -->
+    <script src="postXmlHttpRequest.js"></script>
 
 </body>
 
