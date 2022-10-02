@@ -4,11 +4,12 @@ let form3 = document.getElementById('form3')
 let form4 = document.getElementById('form4')
     //Using httpRequest
 const request = new XMLHttpRequest();
-request.open('POST', 'http://localhost:8080/data');
-request.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
+
 
 form.addEventListener('submit', function(e) {
     e.preventDefault()
+    request.open('POST', 'http://localhost:8080/data');
+    request.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
     let tempValue = document.getElementById('temp').value
     let tempValueNum = parseFloat(tempValue)
     let place = document.getElementById('place').value
@@ -22,6 +23,8 @@ form.addEventListener('submit', function(e) {
 });
 form2.addEventListener('submit', function(e) {
     e.preventDefault()
+    request.open('POST', 'http://localhost:8080/data');
+    request.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
     let amount = document.getElementById('amount').value
     let amountNum = parseFloat(amount)
     let ptype = document.getElementById('type').value
@@ -37,6 +40,8 @@ form2.addEventListener('submit', function(e) {
 });
 form3.addEventListener('submit', function(e) {
     e.preventDefault()
+    request.open('POST', 'http://localhost:8080/data');
+    request.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
     let amount = document.getElementById('speed').value
     let amountNum = parseFloat(amount)
     let direction = document.getElementById('direction').value
@@ -52,6 +57,8 @@ form3.addEventListener('submit', function(e) {
 });
 form4.addEventListener('submit', function(e) {
     e.preventDefault()
+    request.open('POST', 'http://localhost:8080/data');
+    request.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
     let amount = document.getElementById('percentage').value
     let amountNum = parseFloat(amount)
     let place = document.getElementById('cPlace').value
